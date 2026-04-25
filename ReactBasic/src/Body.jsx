@@ -1,4 +1,6 @@
 
+import profilePhoto from './assets/profile.jpg'
+
 function Body(){
 
     return(
@@ -17,7 +19,9 @@ function Body(){
             </div>
 
             <aside className="profile-panel" aria-label="Profile summary">
-                <div className="profile-avatar">RST</div>
+                <div className="profile-avatar">
+                    <img src={profilePhoto} alt="Russel Sto. Tomas profile" />
+                </div>
                 <div className="profile-list">
                     <div>
                         <span>Name</span>
