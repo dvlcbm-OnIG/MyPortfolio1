@@ -6,8 +6,10 @@ function App() {
   return(
     <>
       <Header></Header>
-      <Body></Body>
-      <Food></Food>
+      <main className="page-shell">
+        <Body></Body>
+        <Food></Food>
+      </main>
       <Footer></Footer>
     </>
   )
