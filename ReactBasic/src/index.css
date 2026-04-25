@@ -297,6 +297,34 @@ a:hover {
     box-shadow: var(--shadow);
 }
 
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(141, 107, 91, 0.2);
+    background: rgba(255, 255, 255, 0.62);
+    color: var(--accent-strong);
+    font-weight: 600;
+}
+
+.contact-links a:hover {
+    background: rgba(141, 107, 91, 0.12);
+}
+
+.contact-links svg {
+    width: 16px;
+    height: 16px;
+}
+
 .site-footer p:last-child {
     font-size: 0.92rem;
 }
@@ -344,5 +372,10 @@ a:hover {
     .primary-link,
     .secondary-link {
         width: 100%;
+    }
+
+    .contact-links a {
+        width: 100%;
+        justify-content: center;
     }
 }
