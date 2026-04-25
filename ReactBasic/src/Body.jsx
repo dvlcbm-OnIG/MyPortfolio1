@@ -12,10 +12,7 @@ function Body(){
                     I am Russel Sto. Tomas. I like working out to build an aesthetic physique,
                     and I am constantly learning everyday in programming.
                 </p>
-                <div className="hero-actions">
-                    <a className="primary-link" href="#about">Learn more</a>
-                    <a className="secondary-link" href="#contact">Connect</a>
-                </div>
+                
             </div>
 
             <aside className="profile-panel" aria-label="Profile summary">
