@@ -1,8 +1,12 @@
+import profilePhoto from './assets/profile.jpg'
+
 function Header(){
     return(
         <header className="site-header">
             <div className="brand-lockup">
-                <div className="brand-mark">RST</div>
+                <div className="brand-mark">
+                    <img src={profilePhoto} alt="Russel Sto. Tomas logo" />
+                </div>
                 <div>
                     <p className="eyebrow">Portfolio</p>
                     <h1>Russel Sto. Tomas</h1>
