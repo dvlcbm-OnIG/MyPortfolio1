@@ -323,6 +323,10 @@ a:hover {
     background: linear-gradient(135deg, rgba(255, 250, 244, 0.92), rgba(249, 238, 229, 0.88));
     box-shadow: var(--shadow);
     border: 1px solid rgba(141, 107, 91, 0.12);
+    transform-style: preserve-3d;
+    transform: perspective(1200px) rotateX(0deg) rotateY(0deg);
+    transition: transform 200ms ease, box-shadow 260ms ease, background-color 320ms ease, color 320ms ease, border-color 320ms ease;
+    will-change: transform;
 }
 
 .hero-copy {
@@ -424,6 +428,40 @@ a:hover {
     box-shadow: var(--shadow);
 }
 
+.stack-card {
+    display: grid;
+    align-content: start;
+    gap: 12px;
+}
+
+.icon-grid {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.icon-pill {
+    display: grid;
+    place-items: center;
+    min-height: 58px;
+    border-radius: 16px;
+    border: 1px solid rgba(141, 107, 91, 0.16);
+    background: rgba(255, 255, 255, 0.52);
+    color: var(--accent-strong);
+}
+
+.icon-pill svg {
+    width: 28px;
+    height: 28px;
+}
+
+.tools-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
 .soft-card {
     background: linear-gradient(180deg, rgba(255, 250, 244, 0.95), rgba(244, 234, 223, 0.95));
 }
@@ -494,6 +532,11 @@ a:hover {
 :root[data-theme="dark"] .contact-links a {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(231, 191, 164, 0.2);
+}
+
+:root[data-theme="dark"] .icon-pill {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(231, 191, 164, 0.18);
 }
 
 .contact-links {
@@ -615,5 +658,10 @@ a:hover {
     .contact-links a {
         width: 100%;
         justify-content: center;
+    }
+
+    .icon-grid,
+    .tools-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
