@@ -203,6 +203,52 @@ a:hover {
     justify-content: flex-end;
 }
 
+.mobile-menu-btn {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    min-height: 42px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(141, 107, 91, 0.22);
+    background: rgba(255, 255, 255, 0.68);
+    color: var(--accent-strong);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.menu-icon {
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    position: relative;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+}
+
+.menu-icon::before {
+    top: -6px;
+}
+
+.menu-icon::after {
+    top: 6px;
+}
+
+:root[data-theme="dark"] .mobile-menu-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(231, 191, 164, 0.35);
+}
+
 .site-nav a,
 .primary-link,
 .secondary-link {
@@ -483,19 +529,56 @@ a:hover {
 }
 
 @media (max-width: 920px) {
-    .site-header,
     .hero-card {
         grid-template-columns: 1fr;
     }
 
     .site-header {
-        flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        position: sticky;
+    }
+
+    .mobile-menu-btn {
+        display: inline-flex;
+        margin-left: auto;
     }
 
     .header-actions {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        width: min(320px, calc(100vw - 40px));
+        padding: 12px;
+        border-radius: 18px;
+        border: 1px solid rgba(141, 107, 91, 0.18);
+        background: rgba(255, 250, 244, 0.95);
+        box-shadow: 0 18px 40px rgba(70, 51, 41, 0.2);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        z-index: 80;
+    }
+
+    .header-actions.is-open {
+        display: flex;
+    }
+
+    .site-nav {
         width: 100%;
-        justify-content: flex-start;
+        flex-direction: column;
+    }
+
+    .site-nav a,
+    .theme-toggle {
+        width: 100%;
+        justify-content: center;
+    }
+
+    :root[data-theme="dark"] .header-actions {
+        background: rgba(39, 32, 28, 0.98);
+        border-color: rgba(231, 191, 164, 0.18);
+        box-shadow: 0 24px 50px rgba(8, 5, 4, 0.46);
     }
 
     .content-grid {
@@ -520,10 +603,6 @@ a:hover {
 
     .hero-copy h2 {
         max-width: none;
-    }
-
-    .site-nav {
-        width: 100%;
     }
 
     .site-nav a,
