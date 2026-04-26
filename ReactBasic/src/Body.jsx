@@ -56,10 +56,9 @@ function Body(){
             onMouseLeave={resetCardTilt}
         >
             <div className="hero-copy">
-                <p className="eyebrow">18 years old | 1st Year BSIT</p>
                 <h2>Building a calm, curious life through code, fitness, and growth.</h2>
                 <p>
-                    I am Russel Sto. Tomas. I like working out to build an aesthetic physique,
+                    I like working out to build an aesthetic physique,
                     and I am constantly learning everyday in programming.
                 </p>
                 
