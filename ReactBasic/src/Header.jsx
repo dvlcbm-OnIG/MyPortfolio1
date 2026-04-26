@@ -19,8 +19,8 @@ function Header({ theme, onToggleTheme }){
                     <img src={profilePhoto} alt="Russel Sto. Tomas logo" />
                 </div>
                 <div>
-                    <p className="eyebrow">Portfolio</p>
-                    <h1>Russel Sto. Tomas</h1>
+                    <p className="eyebrow"></p>
+                    <h1>My Portfolio</h1>
                 </div>
             </div>
             <button
@@ -39,7 +39,6 @@ function Header({ theme, onToggleTheme }){
                 <nav className="site-nav" aria-label="Main navigation">
                     <a href="#home" onClick={handleMenuItemClick}>Home</a>
                     <a href="#about" onClick={handleMenuItemClick}>About</a>
-                    <a href="#highlights" onClick={handleMenuItemClick}>Highlights</a>
                     <a href="#contact" onClick={handleMenuItemClick}>Contact</a>
                 </nav>
                 <button
