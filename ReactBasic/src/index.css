@@ -12,6 +12,19 @@
     --radius: 28px;
 }
 
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #1f1a17;
+    --bg-alt: #2a231f;
+    --surface: rgba(55, 45, 39, 0.82);
+    --surface-strong: #3a2f29;
+    --text: #f4e8dc;
+    --muted: #cfbdad;
+    --accent: #c39273;
+    --accent-strong: #e7bfa4;
+    --shadow: 0 24px 55px rgba(8, 5, 4, 0.4);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -29,6 +42,38 @@ body {
         radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 35%),
         radial-gradient(circle at right center, rgba(212, 182, 160, 0.32), transparent 28%),
         linear-gradient(180deg, var(--bg), var(--bg-alt));
+    position: relative;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        radial-gradient(circle at calc(100% - 28px) 28px, rgba(255, 255, 255, 0.12), transparent 18%),
+        linear-gradient(180deg, var(--bg), var(--bg-alt));
+}
+
+body.theme-reveal-active::after {
+    animation: themeRevealFromTopRight 760ms cubic-bezier(0.2, 0.75, 0.15, 1) both;
+}
+
+@keyframes themeRevealFromTopRight {
+    0% {
+        opacity: 1;
+        clip-path: circle(0 at calc(100% - 28px) 28px);
+    }
+    70% {
+        opacity: 0.94;
+        clip-path: circle(155vmax at calc(100% - 28px) 28px);
+    }
+    100% {
+        opacity: 0;
+        clip-path: circle(155vmax at calc(100% - 28px) 28px);
+    }
 }
 
 a {
@@ -39,6 +84,21 @@ a {
 button,
 a {
     transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+body,
+.site-header,
+.hero-card,
+.profile-panel,
+.profile-list div,
+.info-card,
+.site-footer,
+.site-nav a,
+.contact-links a,
+.theme-toggle,
+.secondary-link,
+.primary-link {
+    transition: background-color 320ms ease, color 320ms ease, border-color 320ms ease, box-shadow 320ms ease;
 }
 
 button:hover,
@@ -135,6 +195,14 @@ a:hover {
     gap: 10px;
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
 .site-nav a,
 .primary-link,
 .secondary-link {
@@ -150,6 +218,54 @@ a:hover {
 .site-nav a {
     color: var(--muted);
     background: rgba(255, 255, 255, 0.55);
+}
+
+:root[data-theme="dark"] .site-nav a {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid rgba(141, 107, 91, 0.2);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--accent-strong);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+:root[data-theme="dark"] .theme-toggle {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(231, 191, 164, 0.35);
+}
+
+.toggle-track {
+    width: 40px;
+    height: 22px;
+    border-radius: 999px;
+    background: rgba(141, 107, 91, 0.25);
+    display: inline-flex;
+    align-items: center;
+    padding: 2px;
+}
+
+.toggle-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fff8ef, #e8d5c6);
+    box-shadow: 0 3px 10px rgba(44, 37, 33, 0.28);
+    transform: translateX(0);
+    transition: transform 260ms ease;
+}
+
+:root[data-theme="dark"] .toggle-thumb {
+    transform: translateX(18px);
+    background: linear-gradient(135deg, #f3cdb3, #d9a788);
 }
 
 .hero-card {
@@ -299,6 +415,41 @@ a:hover {
     box-shadow: var(--shadow);
 }
 
+:root[data-theme="dark"] .site-header,
+:root[data-theme="dark"] .hero-card,
+:root[data-theme="dark"] .site-footer {
+    border-color: rgba(231, 191, 164, 0.18);
+}
+
+:root[data-theme="dark"] .site-header {
+    background: rgba(39, 32, 28, 0.72);
+}
+
+:root[data-theme="dark"] .hero-card {
+    background: linear-gradient(135deg, rgba(57, 47, 41, 0.95), rgba(42, 35, 31, 0.9));
+}
+
+:root[data-theme="dark"] .profile-panel,
+:root[data-theme="dark"] .site-footer,
+:root[data-theme="dark"] .info-card,
+:root[data-theme="dark"] .profile-list div {
+    background: rgba(55, 45, 39, 0.72);
+    border-color: rgba(231, 191, 164, 0.15);
+}
+
+:root[data-theme="dark"] .soft-card {
+    background: linear-gradient(180deg, rgba(63, 51, 44, 0.95), rgba(45, 37, 33, 0.95));
+}
+
+:root[data-theme="dark"] .accent-card {
+    background: linear-gradient(160deg, rgba(132, 96, 75, 0.48), rgba(55, 45, 39, 0.9));
+}
+
+:root[data-theme="dark"] .contact-links a {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(231, 191, 164, 0.2);
+}
+
 .contact-links {
     display: flex;
     flex-wrap: wrap;
@@ -342,6 +493,11 @@ a:hover {
         align-items: flex-start;
     }
 
+    .header-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
     .content-grid {
         grid-template-columns: 1fr;
     }
@@ -372,7 +528,8 @@ a:hover {
 
     .site-nav a,
     .primary-link,
-    .secondary-link {
+    .secondary-link,
+    .theme-toggle {
         width: 100%;
     }
 
