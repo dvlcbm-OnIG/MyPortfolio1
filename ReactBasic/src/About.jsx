@@ -1,4 +1,40 @@
+import {
+    SiCss,
+    SiDotnet,
+    SiExpress,
+    SiGit,
+    SiGithub,
+    SiHtml5,
+    SiJavascript,
+    SiMongodb,
+    SiNodedotjs,
+    SiPython,
+    SiReact,
+} from 'react-icons/si'
+import { TbBrandCpp, TbBrandCSharp, TbBrandVisualStudio, TbBrandVscode } from 'react-icons/tb'
+
 export default function About(){
+    const techStackIcons = [
+        { label: 'HTML5', icon: SiHtml5 },
+        { label: 'CSS3', icon: SiCss },
+        { label: 'JavaScript', icon: SiJavascript },
+        { label: 'MongoDB', icon: SiMongodb },
+        { label: 'Express', icon: SiExpress },
+        { label: 'React', icon: SiReact },
+        { label: 'Node.js', icon: SiNodedotjs },
+        { label: 'C#', icon: TbBrandCSharp },
+        { label: 'C++', icon: TbBrandCpp },
+        { label: 'Python', icon: SiPython },
+    ]
+
+    const toolsIcons = [
+        { label: 'Git', icon: SiGit },
+        { label: 'GitHub', icon: SiGithub },
+        { label: '.NET', icon: SiDotnet },
+        { label: 'VS Code', icon: TbBrandVscode },
+        { label: 'MS Visual Studio', icon: TbBrandVisualStudio },
+    ]
+
     return(
         <section id="about" className="content-grid">
             <article className="info-card" id="highlights">
@@ -11,22 +47,26 @@ export default function About(){
                 </p>
             </article>
 
-            <article className="info-card soft-card">
-                <p className="eyebrow">Hobbies</p>
-                <ul className="feature-list">
-                    <li>Working out to have an aesthetic physique</li>
-                    <li>Learning programming every day</li>
-                    <li>Practicing public speaking and confidence</li>
+            <article className="info-card soft-card stack-card">
+                <p className="eyebrow">Tech stack</p>
+                <ul className="icon-grid" aria-label="Tech stack icons">
+                    {techStackIcons.map(({ label, icon: Icon }) => (
+                        <li key={label} className="icon-pill" title={label} aria-label={label}>
+                            <Icon />
+                        </li>
+                    ))}
                 </ul>
             </article>
 
-            <article className="info-card accent-card">
-                <p className="eyebrow">What I value</p>
-                <h3>Growth with consistency.</h3>
-                <p>
-                    I like a clean pace, steady progress, and a lifestyle that keeps me calm,
-                    focused, and better than yesterday.
-                </p>
+            <article className="info-card accent-card stack-card">
+                <p className="eyebrow">Tools</p>
+                <ul className="icon-grid tools-grid" aria-label="Tools icons">
+                    {toolsIcons.map(({ label, icon: Icon }) => (
+                        <li key={label} className="icon-pill" title={label} aria-label={label}>
+                            <Icon />
+                        </li>
+                    ))}
+                </ul>
             </article>
         </section>
     )
