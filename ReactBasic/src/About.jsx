@@ -10,6 +10,7 @@ import {
     SiNodedotjs,
     SiPython,
     SiReact,
+    SiVercel,
 } from 'react-icons/si'
 import { TbBrandCpp, TbBrandCSharp, TbBrandVisualStudio, TbBrandVscode } from 'react-icons/tb'
 
@@ -30,6 +31,7 @@ export default function About(){
     const toolsIcons = [
         { label: 'Git', icon: SiGit },
         { label: 'GitHub', icon: SiGithub },
+        { label: 'Vercel', icon: SiVercel },
         { label: '.NET', icon: SiDotnet },
         { label: 'VS Code', icon: TbBrandVscode },
         { label: 'MS Visual Studio', icon: TbBrandVisualStudio },
