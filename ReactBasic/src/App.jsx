@@ -26,6 +26,40 @@ function App() {
     return () => window.clearTimeout(timeoutId)
   }, [theme])
 
+  useEffect(() => {
+    const sectionsToReveal = document.querySelectorAll('.reveal-on-scroll')
+
+    if (!sectionsToReveal.length) {
+      return
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      sectionsToReveal.forEach((section) => section.classList.add('is-visible'))
+      return
+    }
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+          } else {
+            entry.target.classList.remove('is-visible')
+          }
+        })
+      },
+      {
+        root: null,
+        threshold: 0.18,
+        rootMargin: '0px 0px -10% 0px',
+      }
+    )
+
+    sectionsToReveal.forEach((section) => revealObserver.observe(section))
+
+    return () => revealObserver.disconnect()
+  }, [])
+
   const toggleTheme = () => {
     setTheme((currentTheme) => (currentTheme === 'light' ? 'dark' : 'light'))
   }
