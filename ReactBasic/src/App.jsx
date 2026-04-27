@@ -65,14 +65,14 @@ function App() {
   }
 
   return(
-    <>
+    <div id="top">
       <Header theme={theme} onToggleTheme={toggleTheme}></Header>
       <main className="page-shell">
         <Body></Body>
         <About></About>
       </main>
       <Footer></Footer>
-    </>
+    </div>
   )
 }
 
