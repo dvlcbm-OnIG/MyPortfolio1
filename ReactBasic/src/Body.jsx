@@ -50,7 +50,8 @@ function Body(){
     return(
         <section
             id="home"
-            className="hero-card"
+            className="hero-card reveal-on-scroll"
+            style={{ '--reveal-delay': '120ms' }}
             ref={heroCardRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={resetCardTilt}
