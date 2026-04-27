@@ -84,47 +84,53 @@ function Body(){
             <section className="intro-screen reveal-on-scroll" style={{ '--reveal-delay': '40ms' }}>
                 <div className="intro-copy" ref={introCopyRef}>
                     <p className="eyebrow">Introduction</p>
-                    <h2>Hello there.</h2>
-                    <p>Welcome to my portfolio website.</p>
+                    <h2>
+                        <span className="intro-tone-primary">Hello</span>{' '}
+                        <span className="intro-tone-secondary">there.</span>
+                    </h2>
+                    <p>
+                        <span className="intro-tone-primary">Welcome</span>{' '}
+                        <span className="intro-tone-secondary">to my portfolio website.</span>
+                    </p>
                 </div>
             </section>
 
-            <section
-                id="home"
-                className="hero-card reveal-on-scroll"
-                style={{ '--reveal-delay': '120ms' }}
-                ref={heroCardRef}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={resetCardTilt}
-            >
-                <div className="hero-copy">
-                    <h2>Building a calm, curious life through code, fitness, and growth.</h2>
-                    <p>
-                        I like working out to build an aesthetic physique,
-                        and I am constantly learning everyday in programming.
-                    </p>
-                    
-                </div>
+            <section id="home" className="home-reveal reveal-on-scroll" style={{ '--reveal-delay': '120ms' }}>
+                <div
+                    className="hero-card"
+                    ref={heroCardRef}
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={resetCardTilt}
+                >
+                    <div className="hero-copy">
+                        <h2>Building a calm, curious life through code, fitness, and growth.</h2>
+                        <p>
+                            I like working out to build an aesthetic physique,
+                            and I am constantly learning everyday in programming.
+                        </p>
+                        
+                    </div>
 
-                <aside className="profile-panel" aria-label="Profile summary">
-                    <div className="profile-avatar">
-                        <img src={profilePhoto} alt="Russel Sto. Tomas profile" />
-                    </div>
-                    <div className="profile-list">
-                        <div>
-                            <span>Name</span>
-                            <strong>Russel Sto. Tomas</strong>
+                    <aside className="profile-panel" aria-label="Profile summary">
+                        <div className="profile-avatar">
+                            <img src={profilePhoto} alt="Russel Sto. Tomas profile" />
                         </div>
-                        <div>
-                            <span>Course</span>
-                            <strong>BSIT, 1st Year</strong>
+                        <div className="profile-list">
+                            <div>
+                                <span>Name</span>
+                                <strong>Russel Sto. Tomas</strong>
+                            </div>
+                            <div>
+                                <span>Course</span>
+                                <strong>BSIT, 1st Year</strong>
+                            </div>
+                            <div>
+                                <span>Focus</span>
+                                <strong>Learning, discipline, confidence</strong>
+                            </div>
                         </div>
-                        <div>
-                            <span>Focus</span>
-                            <strong>Learning, discipline, confidence</strong>
-                        </div>
-                    </div>
-                </aside>
+                    </aside>
+                </div>
             </section>
         </>
     );
