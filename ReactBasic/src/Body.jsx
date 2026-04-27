@@ -83,7 +83,6 @@ function Body(){
         <>
             <section className="intro-screen reveal-on-scroll" style={{ '--reveal-delay': '40ms' }}>
                 <div className="intro-copy" ref={introCopyRef}>
-                    <p className="eyebrow">Introduction</p>
                     <h2>
                         <span className="intro-tone-primary">Hello</span>{' '}
                         <span className="intro-tone-secondary">there.</span>
