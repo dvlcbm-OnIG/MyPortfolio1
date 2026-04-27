@@ -4,6 +4,12 @@ import { useState } from 'react'
 function Header({ theme, onToggleTheme }){
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+    const handleHomeClick = (event) => {
+        event.preventDefault()
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        setIsMenuOpen(false)
+    }
+
     const handleMenuToggle = () => {
         setIsMenuOpen((currentState) => !currentState)
     }
@@ -37,7 +43,7 @@ function Header({ theme, onToggleTheme }){
 
             <div id="mobile-header-menu" className={`header-actions ${isMenuOpen ? 'is-open' : ''}`}>
                 <nav className="site-nav" aria-label="Main navigation">
-                    <a href="#home" onClick={handleMenuItemClick}>Home</a>
+                    <a href="#top" onClick={handleHomeClick}>Home</a>
                     <a href="#about" onClick={handleMenuItemClick}>About</a>
                     <a href="#contact" onClick={handleMenuItemClick}>Contact</a>
                 </nav>
