@@ -11,6 +11,7 @@
     --hover-surface: rgba(141, 107, 91, 0.12);
     --hover-border: rgba(141, 107, 91, 0.3);
     --icon-hover-surface: rgba(141, 107, 91, 0.13);
+    --section-gap: clamp(38px, 5.2vw, 68px);
     --shadow: 0 20px 50px rgba(70, 51, 41, 0.12);
     --radius: 28px;
 }
@@ -28,6 +29,7 @@
     --hover-surface: rgba(231, 191, 164, 0.16);
     --hover-border: rgba(231, 191, 164, 0.34);
     --icon-hover-surface: rgba(231, 191, 164, 0.14);
+    --section-gap: clamp(38px, 5.2vw, 68px);
     --shadow: 0 24px 55px rgba(8, 5, 4, 0.4);
 }
 
@@ -145,11 +147,11 @@ body,
 }
 
 .site-header,
-.hero-card,
+.home-reveal,
 .content-grid,
 .site-footer {
     width: min(1120px, calc(100% - 32px));
-    margin: 20px auto 0;
+    margin: var(--section-gap) auto 0;
 }
 
 .site-header {
@@ -207,6 +209,7 @@ body,
     margin: 0;
     line-height: 1.05;
     letter-spacing: -0.03em;
+    font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
 
 .eyebrow {
@@ -355,41 +358,41 @@ body,
     transform: perspective(1200px) rotateX(0deg) rotateY(0deg);
     transition: transform 200ms ease, box-shadow 260ms ease, background-color 320ms ease, color 320ms ease, border-color 320ms ease;
     will-change: transform;
+    width: 100%;
+    margin: 0;
 }
 
 .intro-screen {
     min-height: clamp(620px, 90vh, 920px);
     width: 100vw;
     margin-left: calc(50% - 50vw);
+    margin-top: var(--section-gap);
     padding: 24px;
     display: grid;
     place-items: center;
-    border-radius: calc(var(--radius) + 6px);
-    border: 1px solid rgba(141, 107, 91, 0.14);
     background:
         radial-gradient(circle at 15% 25%, rgba(220, 194, 177, 0.32), transparent 38%),
         radial-gradient(circle at 85% 70%, rgba(165, 124, 102, 0.2), transparent 34%),
         linear-gradient(160deg, rgba(255, 250, 244, 0.95), rgba(240, 226, 214, 0.88));
-    box-shadow: var(--shadow);
     overflow: hidden;
 }
 
 .intro-copy {
     --intro-parallax-shift: 0px;
     width: min(760px, 92vw);
-    padding: clamp(30px, 6vw, 60px);
+    padding: 0;
     text-align: center;
-    border-radius: 30px;
-    border: 1px solid rgba(141, 107, 91, 0.2);
-    background: rgba(255, 250, 244, 0.74);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 22px 45px rgba(70, 51, 41, 0.16);
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
     transform: translate3d(0, var(--intro-parallax-shift), 0);
     will-change: transform;
 }
 
 .intro-copy h2 {
     margin: 0;
+    font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
     font-size: clamp(2.4rem, 7vw, 6rem);
     line-height: 0.95;
     letter-spacing: -0.04em;
@@ -400,6 +403,14 @@ body,
     color: var(--muted);
     font-size: clamp(1rem, 2.2vw, 1.35rem);
     line-height: 1.6;
+}
+
+.intro-tone-primary {
+    color: var(--accent-strong);
+}
+
+.intro-tone-secondary {
+    color: var(--accent);
 }
 
 .hero-copy {
@@ -588,6 +599,7 @@ body,
     display: grid;
     gap: 14px;
     padding: 24px 28px 30px;
+    margin-bottom: clamp(48px, 7vw, 88px);
     border-radius: var(--radius);
     background: rgba(255, 250, 244, 0.8);
     border: 1px solid rgba(141, 107, 91, 0.12);
@@ -609,7 +621,6 @@ body,
 }
 
 :root[data-theme="dark"] .intro-screen {
-    border-color: rgba(231, 191, 164, 0.2);
     background:
         radial-gradient(circle at 15% 25%, rgba(154, 113, 90, 0.28), transparent 40%),
         radial-gradient(circle at 85% 70%, rgba(220, 170, 141, 0.16), transparent 36%),
@@ -617,9 +628,8 @@ body,
 }
 
 :root[data-theme="dark"] .intro-copy {
-    border-color: rgba(231, 191, 164, 0.28);
-    background: rgba(44, 35, 30, 0.75);
-    box-shadow: 0 26px 50px rgba(8, 5, 4, 0.45);
+    background: transparent;
+    box-shadow: none;
 }
 
 :root[data-theme="dark"] .profile-panel,
@@ -753,7 +763,7 @@ body,
 @media (max-width: 640px) {
     .page-shell,
     .site-header,
-    .hero-card,
+    .home-reveal,
     .content-grid,
     .site-footer {
         width: min(100% - 20px, 1120px);
