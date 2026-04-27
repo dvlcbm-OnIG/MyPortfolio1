@@ -3,7 +3,7 @@ import { FaFacebookF, FaGithub, FaInstagram } from 'react-icons/fa'
 
 function Footer(){
     return(
-        <footer id="contact" className="site-footer">
+        <footer id="contact" className="site-footer reveal-on-scroll" style={{ '--reveal-delay': '160ms' }}>
             <div>
                 <p className="eyebrow">Contact</p>
                 <h2>Open to connect and keep learning.</h2>
