@@ -11,7 +11,8 @@
     --hover-surface: rgba(141, 107, 91, 0.12);
     --hover-border: rgba(141, 107, 91, 0.3);
     --icon-hover-surface: rgba(141, 107, 91, 0.13);
-    --section-gap: clamp(38px, 5.2vw, 68px);
+    --header-gap: clamp(18px, 2.8vw, 32px);
+    --section-gap: clamp(46px, 6vw, 82px);
     --shadow: 0 20px 50px rgba(70, 51, 41, 0.12);
     --radius: 28px;
 }
@@ -29,7 +30,8 @@
     --hover-surface: rgba(231, 191, 164, 0.16);
     --hover-border: rgba(231, 191, 164, 0.34);
     --icon-hover-surface: rgba(231, 191, 164, 0.14);
-    --section-gap: clamp(38px, 5.2vw, 68px);
+    --header-gap: clamp(18px, 2.8vw, 32px);
+    --section-gap: clamp(46px, 6vw, 82px);
     --shadow: 0 24px 55px rgba(8, 5, 4, 0.4);
 }
 
@@ -152,6 +154,10 @@ body,
 .site-footer {
     width: min(1120px, calc(100% - 32px));
     margin: var(--section-gap) auto 0;
+}
+
+.site-header {
+    margin-top: var(--header-gap);
 }
 
 .site-header {
@@ -366,7 +372,7 @@ body,
     min-height: clamp(620px, 90vh, 920px);
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    margin-top: var(--section-gap);
+    margin-top: 10px;
     padding: 24px;
     display: grid;
     place-items: center;
@@ -600,6 +606,7 @@ body,
     gap: 14px;
     padding: 24px 28px 30px;
     margin-bottom: clamp(48px, 7vw, 88px);
+    margin-top: 0;
     border-radius: var(--radius);
     background: rgba(255, 250, 244, 0.8);
     border: 1px solid rgba(141, 107, 91, 0.12);
@@ -773,6 +780,10 @@ body,
     .site-footer,
     .site-header {
         padding: 18px;
+    }
+
+    .site-footer {
+        margin-top: var(--section-gap);
     }
 
     .intro-screen {
