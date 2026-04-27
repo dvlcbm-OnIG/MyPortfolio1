@@ -13,7 +13,7 @@ function Header({ theme, onToggleTheme }){
     }
 
     return(
-        <header className="site-header">
+        <header className="site-header reveal-on-scroll" style={{ '--reveal-delay': '60ms' }}>
             <div className="brand-lockup">
                 <div className="brand-mark">
                     <img src={profilePhoto} alt="Russel Sto. Tomas logo" />
