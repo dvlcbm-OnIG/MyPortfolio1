@@ -38,8 +38,8 @@ export default function About(){
     ]
 
     return(
-        <section id="about" className="content-grid">
-            <article className="info-card" id="highlights">
+        <section id="about" className="content-grid reveal-on-scroll" style={{ '--reveal-delay': '180ms' }}>
+            <article className="info-card reveal-on-scroll" id="highlights" style={{ '--reveal-delay': '220ms' }}>
                 <p className="eyebrow">About me</p>
                 <h3>Curious, motivated, and always learning.</h3>
                 <p>
@@ -49,7 +49,7 @@ export default function About(){
                 </p>
             </article>
 
-            <article className="info-card soft-card stack-card">
+            <article className="info-card soft-card stack-card reveal-on-scroll" style={{ '--reveal-delay': '280ms' }}>
                 <p className="eyebrow">Tech stack</p>
                 <ul className="icon-grid" aria-label="Tech stack icons">
                     {techStackIcons.map(({ label, icon: Icon }) => (
@@ -60,7 +60,7 @@ export default function About(){
                 </ul>
             </article>
 
-            <article className="info-card accent-card stack-card">
+            <article className="info-card accent-card stack-card reveal-on-scroll" style={{ '--reveal-delay': '340ms' }}>
                 <p className="eyebrow">Tools</p>
                 <ul className="icon-grid tools-grid" aria-label="Tools icons">
                     {toolsIcons.map(({ label, icon: Icon }) => (
