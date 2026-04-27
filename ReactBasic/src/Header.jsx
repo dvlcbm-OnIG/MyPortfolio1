@@ -26,7 +26,7 @@ function Header({ theme, onToggleTheme }){
                 </div>
                 <div>
                     <p className="eyebrow"></p>
-                    <h1>My Portfolio</h1>
+                    <h1>Dvlcbm</h1>
                 </div>
             </div>
             <button
