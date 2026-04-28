@@ -782,6 +782,10 @@ body,
         padding: 18px;
     }
 
+    .hero-card {
+        gap: 14px;
+    }
+
     .site-footer {
         margin-top: var(--section-gap);
     }
@@ -798,6 +802,35 @@ body,
 
     .hero-copy h2 {
         max-width: none;
+        font-size: clamp(1.7rem, 8.3vw, 2.15rem);
+    }
+
+    .hero-copy p {
+        font-size: 1rem;
+        line-height: 1.58;
+    }
+
+    .profile-panel {
+        gap: 12px;
+        padding: 14px;
+    }
+
+    .profile-avatar {
+        width: 65%;
+        min-height: 208px;
+        margin-inline: auto;
+    }
+
+    .profile-avatar img {
+        min-height: 208px;
+    }
+
+    .profile-list {
+        gap: 10px;
+    }
+
+    .profile-list div {
+        padding: 12px 14px;
     }
 
     .site-nav a,
