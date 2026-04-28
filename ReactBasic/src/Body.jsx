@@ -1,6 +1,149 @@
 
 import profilePhoto from './assets/profile.jpg'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+const introLines = {
+    heading: [
+        { text: 'Hello', className: 'intro-tone-primary' },
+        { text: 'there.', className: 'intro-tone-secondary' },
+    ],
+    paragraph: [
+        { text: 'Welcome', className: 'intro-tone-primary' },
+        { text: 'to my portfolio website.', className: 'intro-tone-secondary' },
+    ],
+}
+
+function getLineLength(segments) {
+    return segments.reduce((totalLength, segment, index) => {
+        return totalLength + segment.text.length + (index < segments.length - 1 ? 1 : 0)
+    }, 0)
+}
+
+function renderTypewriterLine(Tag, segments, visibleLength, showCursor) {
+    const content = []
+    let consumedLength = 0
+
+    segments.forEach((segment, index) => {
+        const segmentLength = segment.text.length
+        const visibleSegmentLength = Math.max(0, Math.min(visibleLength - consumedLength, segmentLength))
+
+        if (visibleSegmentLength > 0) {
+            content.push(
+                <span className={segment.className} key={`${segment.text}-${index}`}>
+                    {segment.text.slice(0, visibleSegmentLength)}
+                </span>
+            )
+        }
+
+        consumedLength += segmentLength
+
+        if (index < segments.length - 1) {
+            if (visibleLength > consumedLength) {
+                content.push(<span key={`space-${index}`}>{' '}</span>)
+            }
+
+            consumedLength += 1
+        }
+    })
+
+        if (showCursor) {
+            content.push(<span className="typewriter-cursor" aria-hidden="true" key="cursor-end" />)
+    }
+
+    return <Tag className="typewriter-line">{content}</Tag>
+}
+
+function IntroTypewriter() {
+    const headingLength = getLineLength(introLines.heading)
+    const paragraphLength = getLineLength(introLines.paragraph)
+    const [animationState, setAnimationState] = useState({ phase: 'typing-heading', headingLength: 0, paragraphLength: 0 })
+
+    useEffect(() => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            setAnimationState((currentState) => {
+                if (
+                    currentState.phase === 'static' &&
+                    currentState.headingLength === headingLength &&
+                    currentState.paragraphLength === paragraphLength
+                ) {
+                    return currentState
+                }
+
+                return { phase: 'static', headingLength: headingLength, paragraphLength: paragraphLength }
+            })
+
+            return
+        }
+
+        const delay = animationState.phase === 'typing-heading' || animationState.phase === 'typing-paragraph' || animationState.phase === 'deleting-paragraph' || animationState.phase === 'deleting-heading'
+            ? 110
+            : 900
+
+        const timeoutId = window.setTimeout(() => {
+            setAnimationState((currentState) => {
+                switch (currentState.phase) {
+                    case 'typing-heading':
+                        if (currentState.headingLength < headingLength) {
+                            return {
+                                ...currentState,
+                                headingLength: currentState.headingLength + 1,
+                            }
+                        }
+
+                        return { ...currentState, phase: 'typing-paragraph' }
+                    case 'typing-paragraph':
+                        if (currentState.paragraphLength < paragraphLength) {
+                            return {
+                                ...currentState,
+                                paragraphLength: currentState.paragraphLength + 1,
+                            }
+                        }
+
+                        return { ...currentState, phase: 'deleting-paragraph' }
+                    case 'deleting-paragraph':
+                        if (currentState.paragraphLength > 0) {
+                            return {
+                                ...currentState,
+                                paragraphLength: currentState.paragraphLength - 1,
+                            }
+                        }
+
+                        return { ...currentState, phase: 'deleting-heading' }
+                    case 'deleting-heading':
+                        if (currentState.headingLength > 0) {
+                            return {
+                                ...currentState,
+                                headingLength: currentState.headingLength - 1,
+                            }
+                        }
+
+                        return { phase: 'typing-heading', headingLength: 0, paragraphLength: 0 }
+                    default:
+                        return { phase: 'typing-heading', headingLength: 0, paragraphLength: 0 }
+                }
+            })
+        }, delay)
+
+        return () => window.clearTimeout(timeoutId)
+    }, [animationState.phase, animationState.headingLength, animationState.paragraphLength, headingLength, paragraphLength])
+
+    return (
+        <>
+            {renderTypewriterLine(
+                'h2',
+                introLines.heading,
+                animationState.headingLength,
+                animationState.phase === 'typing-heading' || animationState.phase === 'deleting-heading' || animationState.phase === 'static'
+            )}
+            {renderTypewriterLine(
+                'p',
+                introLines.paragraph,
+                animationState.paragraphLength,
+                animationState.phase === 'typing-paragraph' || animationState.phase === 'deleting-paragraph' || animationState.phase === 'static'
+            )}
+        </>
+    )
+}
 
 function Body(){
     const introCopyRef = useRef(null)
@@ -83,14 +226,7 @@ function Body(){
         <>
             <section className="intro-screen reveal-on-scroll" style={{ '--reveal-delay': '40ms' }}>
                 <div className="intro-copy" ref={introCopyRef}>
-                    <h2>
-                        <span className="intro-tone-primary">Hello</span>{' '}
-                        <span className="intro-tone-secondary">there.</span>
-                    </h2>
-                    <p>
-                        <span className="intro-tone-primary">Welcome</span>{' '}
-                        <span className="intro-tone-secondary">to my portfolio website.</span>
-                    </p>
+                    <IntroTypewriter />
                 </div>
             </section>
 
