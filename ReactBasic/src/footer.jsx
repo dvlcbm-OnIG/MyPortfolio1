@@ -6,7 +6,6 @@ function Footer(){
         <footer id="contact" className="site-footer reveal-on-scroll" style={{ '--reveal-delay': '160ms' }}>
             <div>
                 <p className="eyebrow">Contact</p>
-                <h2>Open to connect and keep learning.</h2>
             </div>
             <div className="contact-links" aria-label="Social links">
                 <a
