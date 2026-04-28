@@ -775,6 +775,9 @@ body,
     .site-footer {
         width: min(100% - 20px, 1120px);
     }
+    .page-shell{
+        padding-top: 8px;
+    }
 
     .hero-card,
     .site-footer,
@@ -784,6 +787,7 @@ body,
 
     .hero-card {
         gap: 14px;
+        
     }
 
     .site-footer {
