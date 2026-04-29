@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 
 const introLines = {
     heading: [
-        { text: 'Hello', className: 'intro-tone-primary' },
+        { text: 'Hello, ', className: 'intro-tone-primary' },
         { text: 'there.', className: 'intro-tone-secondary' },
     ],
     paragraph: [
